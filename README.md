@@ -1,5 +1,11 @@
 # 🪙 Control
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paulofachini_control&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=paulofachini_control)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=paulofachini_control&metric=coverage)](https://sonarcloud.io/summary/new_code?id=paulofachini_control)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=paulofachini_control&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=paulofachini_control)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=paulofachini_control&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=paulofachini_control)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=paulofachini_control&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=paulofachini_control)
+
 Sistema para o controle financeiro pessoal.
 
 ## 🗺️ Sumário
