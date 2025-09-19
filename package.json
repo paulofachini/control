@@ -33,7 +33,8 @@
     "test": "jest",
     "test:unit": "jest tests/unit/",
     "test:integration": "jest tests/integration/",
-    "test:coverage": "jest --testPathIgnorePatterns=tests/e2e",
+    "test:coverage": "jest tests/unit tests/integration --coverage",
+    "test:ci": "jest --coverage --testPathIgnorePatterns=tests/e2e --testResultsProcessor=jest-junit",
     "test:e2e": "jest tests/e2e/"
   },
   "repository": {

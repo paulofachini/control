@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run unit and integration tests with coverage
-        run: npm test -- --coverage --testResultsProcessor=jest-junit
+        run: npm run test:ci
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
