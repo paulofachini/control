@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../src/app');
+const app = require('../../src/app');
 
-describe('Control Finances API', () => {
+describe('Finance API - Integration Tests', () => {
 
     test('should return a list of financial entries', async () => {
         const response = await request(app).get('/finances');

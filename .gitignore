@@ -9,12 +9,9 @@
 # JavaScript / Node.js
 ##########################################
 
-# Dependency directories
+# Directories
 node_modules/
-dist/
-build/
-jspm_packages/
-docs/
+coverage/
 
 # Optional npm cache directory
 .npm

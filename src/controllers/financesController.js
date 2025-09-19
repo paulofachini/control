@@ -1,4 +1,4 @@
-const financeService = require('../services/financeService');
+const financeService = require('../services/financesService');
 
 const getFinances = (req, res) => {
     const finances = financeService.getAll();
