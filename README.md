@@ -1,5 +1,7 @@
 # 🪙 Control
 
+Sistema para o controle financeiro pessoal.
+
 ## 🗺️ Sumário
 
 - [1. O que é o projeto?](#1--o-que-é-o-projeto)
