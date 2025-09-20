@@ -8,8 +8,8 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  unit_and_integration_tests:
-    name: Run Unit & Integration Tests
+  tests_and_sonar_scan:
+    name: Run Tests and SonarCloud Scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,24 +27,6 @@ jobs:
 
       - name: Run unit & integration tests
         run: npm run test:ci
-
-  sonar_scan:
-    name: SonarCloud Scan
-    runs-on: ubuntu-latest
-    needs: unit_and_integration_tests
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'
-
-      - name: Install dependencies
-        run: npm install
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -69,11 +51,25 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Docker image
-        run: docker build -t control-api .
+      - name: Install Docker Compose
+        run: sudo apt-get install -y docker-compose
 
-      - name: Run container
-        run: docker run -d --name control-api -p 3000:3000 control-api
+      - name: Build and Run container
+        run: docker-compose up --build --detach
+
+      - name: Wait for the API to be ready
+        run: |
+          for i in `seq 1 10`; do
+            nc -z localhost 3000 && echo Success && exit 0
+            echo "Waiting for API to be ready..."
+            sleep 5
+          done
+          echo "Failed to connect to API on port 3000"
+          exit 1
 
       - name: Run E2E tests
         run: npm run test:e2e
+
+      - name: Stop and remove containers
+        if: always()
+        run: docker-compose down
