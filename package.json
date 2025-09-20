@@ -4,38 +4,40 @@
   "description": "Sistema para o controle financeiro pessoal.",
   "main": "index.js",
   "jest": {
-      "testMatch": [
-          "**/tests/**/*.test.js"
-      ],
-      "collectCoverage": true,
-      "coverageDirectory": "coverage",
-      "coverageReporters": [
-          "lcov",
-          "text"
-      ],
-      "reporters": [
-          "default",
-          [
-              "jest-junit",
-              {
-                  "outputDirectory": "coverage",
-                  "outputName": "test-report.xml"
-              }
-          ]
-      ],
-      "collectCoverageFrom": [
-          "src/**/*.js",
-          "!**/node_modules/**"
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "coverage",
+          "outputName": "test-report.xml"
+        }
       ]
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!**/node_modules/**"
+    ]
   },
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest",
-    "test:unit": "jest tests/unit/",
-    "test:integration": "jest tests/integration/",
-    "test:coverage": "jest tests/unit tests/integration --coverage",
-    "test:ci": "jest --coverage --testPathIgnorePatterns=tests/e2e --testResultsProcessor=jest-junit",
-    "test:e2e": "jest tests/e2e/"
+    "db:migrate": "node src/database/runMigrations.js",
+    "test": "jest --runInBand",
+    "test:unit": "jest tests/unit/ --runInBand",
+    "test:integration": "jest tests/integration/ --runInBand",
+    "test:coverage": "jest tests/unit tests/integration --coverage --runInBand",
+    "test:ci": "jest --coverage --testPathIgnorePatterns=tests/e2e --testResultsProcessor=jest-junit --runInBand",
+    "test:e2e": "jest tests/e2e/ --runInBand"
   },
   "repository": {
     "type": "git",
@@ -49,12 +51,15 @@
   },
   "homepage": "https://github.com/paulofachini/control#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "jest": "^30.1.3",
     "jest-junit": "^16.0.0",
     "jest-sonar": "^0.2.16",
+    "nodemon": "^3.1.10",
     "supertest": "^7.1.4"
   }
 }

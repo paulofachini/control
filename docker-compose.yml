@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  control-api:
+    build: .
+    container_name: control-api
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app ## hot-reloading
+    command: npm run dev
