@@ -15,3 +15,6 @@ coverage/
 
 # Optional npm cache directory
 .npm
+
+# SQLite database file
+database.db
