@@ -44,6 +44,7 @@ Para executar este projeto, você precisa ter o **Node.js** e o **npm** instalad
    - Para confirmar que o Node.js e o npm estão instalados corretamente, execute os seguintes comandos no terminal:
 
      ````bash
+     nvm --version
      node --version
      npm --version
      ````
